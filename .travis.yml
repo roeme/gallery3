@@ -1,20 +1,30 @@
 language: php
-php:
-  - 5.3
-  - 5.4
+
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+      php: 7.4
+    - os: linux
+      dist: xenial
+      php: 5.6
 
 branches:
   only:
     - 3.0.x
     - 3.1.x
     - master
+    - /^travis\/.*$/
+
+notifications:
+  email: false
 
 services:
   - mysql
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq graphicsmagick imagemagick php5-gd ffmpeg git-core
+  - sudo apt-get install -qq graphicsmagick imagemagick php-gd ffmpeg git-core
 
 before_script:
   - mysql -e 'create database gallery3; create database gallery3_test;'

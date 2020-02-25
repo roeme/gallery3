@@ -1,7 +1,7 @@
 Gallery 3.1+ (development version)
 ==================================
 
-[![Build Status](https://travis-ci.org/gallery/gallery3.png?branch=master)](https://travis-ci.org/gallery/gallery3)
+[![Build Status](https://travis-ci.org/bwdutton/gallery3.png?branch=master)](https://travis-ci.org/bwdutton/gallery3)
 
 About
 -----
@@ -21,7 +21,7 @@ welcome theme and module developers to play with this release and
 start turning out slick new designs for our happy users.  If you have
 questions or problems, you can get help in the Gallery forums:
 
-  http://galleryproject.org/forum/96
+  https://groups.google.com/forum/#!forum/gallery-3-users
 
 Security
 --------
@@ -37,8 +37,9 @@ Supported Configuration
 
  - Platform: Linux / Unix.
  - Web server: Apache 2.2 and newer.
- - PHP 5.2.3 and newer (PHP's safe_mode must be disabled and simplexml,
+ - PHP 5.6 and newer (PHP's safe_mode must be disabled and simplexml,
    filter, and json must be installed).
+ - short_open_tag must be enabled
  - Database: MySQL 5 and newer.
 
 For complete system requirements, please refer to:
@@ -47,6 +48,10 @@ For complete system requirements, please refer to:
 
 Installing and Upgrading Instructions
 -------------------------------------
+
+For docker installations:
+
+  https://hub.docker.com/r/bwdutton/gallery3
 
 For comprehensive instructions, The online User Guide is your best resource:
 
@@ -80,4 +85,4 @@ Bugs, Questions, Problems?
 --------------------------
 
  - Check out the Gallery 3 FAQ: http://codex.galleryproject.org/Gallery3:FAQ
- - Try the Yahoo community support group: https://groups.yahoo.com/neo/groups/gallery3/info
+ - Try the support group: https://groups.google.com/forum/#!forum/gallery-3-users
