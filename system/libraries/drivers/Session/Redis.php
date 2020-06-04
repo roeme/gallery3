@@ -46,18 +46,16 @@ class Session_Redis_Driver implements Session_Driver {
 			$this->backend->$method($server['host']);
 		}
 
-		Kohana_Log::add('error', 'Session Redis Driver Initialized');
+		Kohana_Log::add('debug', 'Session Redis Driver Initialized');
 	}
 
 	public function open($path, $name)
 	{
-Kohana_Log::add("error", "open session");
 		return TRUE;
 	}
 
 	public function close()
 	{
-Kohana_Log::add("error", "close session");
 		if (empty($this->config['server']['persistent']))
 		{
 			$this->backend->close();
@@ -68,24 +66,18 @@ Kohana_Log::add("error", "close session");
 
 	public function read($id)
 	{
-Kohana_Log::add("error", "read session for $id");
 		$data = $this->backend->get($id);
 
 		if (!strlen($data))
 		{
 			return '';
 		}
-Kohana_Log::add("error", 'sdata1: '.base64_decode($data));
-#Kohana_Log::add("error", 'sdata2: '.print_r($_SESSION,1));
-#session_decode(base64_decode($data));
-#Kohana_Log::add("error", 'sdata3: '.print_r($_SESSION,1));
 
 		return ($this->encrypt === NULL) ? base64_decode($data) : $this->encrypt->decode($data);
 	}
 
 	public function write($id, $data)
 	{
-Kohana_Log::add("error", "write session $id: ".print_r($data,1));
 		if ( ! Session::$should_save)
 			return TRUE;
 
@@ -100,7 +92,6 @@ Kohana_Log::add("error", "write session $id: ".print_r($data,1));
 
 	public function destroy($id)
 	{
-Kohana_Log::add("error", "destroy: $id");
 		$this->backend->del($id);
 
 		return TRUE;
@@ -110,7 +101,6 @@ Kohana_Log::add("error", "destroy: $id");
 	{
 		// Generate a new session id
 		session_regenerate_id();
-Kohana_Log::add("error", "regen ".session_id());
 
 		// Return new session id
 		return session_id();
