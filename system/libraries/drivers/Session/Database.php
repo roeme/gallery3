@@ -73,6 +73,7 @@ class Session_Database_Driver implements Session_Driver {
 
 	public function read($id)
 	{
+Kohana_Log::add("error", "read session for $id");
 		// Load the session
 		$query = db::select('data')
 			->from($this->table)
@@ -93,12 +94,14 @@ class Session_Database_Driver implements Session_Driver {
 
 		// Load the data
 		$data = $query->current()->data;
+Kohana_Log::add("error", 'sdata1: '.base64_decode($data));
 
 		return ($this->encrypt === NULL) ? base64_decode($data) : $this->encrypt->decode($data);
 	}
 
 	public function write($id, $data)
 	{
+Kohana_Log::add("error", "write session $id: ".print_r($data,1));
 		if ( ! Session::$should_save)
 			return TRUE;
 
