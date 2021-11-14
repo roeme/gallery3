@@ -1,8 +1,6 @@
 Gallery 3.1+ (development version)
 ==================================
 
-[![Build Status](https://travis-ci.org/bwdutton/gallery3.png?branch=master)](https://travis-ci.org/bwdutton/gallery3)
-
 About
 -----
 
@@ -26,20 +24,17 @@ questions or problems, you can get help in the Gallery forums:
 Security
 --------
 
-We've contracted a professional security audit, received their results
-and resolved all the issues they found.
-
-Did you find a security flaw?  Please email security@galleryproject.org
-with the details and we'll fix it ASAP!
+Did you find a security flaw?  Please submit an issue in github:
+https://github.com/bwdutton/gallery3/issues
 
 Supported Configuration
 -----------------------
 
  - Platform: Linux / Unix.
  - Web server: Apache 2.2 and newer.
- - PHP 5.6 and newer (PHP's safe_mode must be disabled and simplexml,
+ - PHP 7.0 and newer (PHP's safe_mode must be disabled and simplexml,
    filter, and json must be installed).
- - short_open_tag must be enabled
+ - short_open_tag isn't required but additional modules and themes may rely on it.
  - Database: MySQL 5 and newer.
 
 For complete system requirements, please refer to:
@@ -89,8 +84,22 @@ php installer/index.php [-h host] [-u user] [-p pass] [-d dbname]
  -x     Table prefix           (default: )
 ```
 
+### Optional dependencies
+
+Install composer dependencies to make all of the modules work (currently autorotate, phpmailer).
+
+```sh
+composer install
+```
+
 Bugs, Questions, Problems?
 --------------------------
 
  - Check out the Gallery 3 FAQ: http://codex.galleryproject.org/Gallery3:FAQ
  - Try the support group: https://groups.google.com/forum/#!forum/gallery-3-users
+
+### Forgot your password? Use the command line:
+
+```sh
+php index.php passwordreset <username>
+```
