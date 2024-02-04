@@ -695,7 +695,7 @@ class access_Core {
         $fp = fopen("$dir/.htaccess", "w+");
         fwrite($fp, "<IfModule mod_rewrite.c>\n");
         fwrite($fp, "  RewriteEngine On\n");
-        fwrite($fp, "  RewriteRule (.*) $base_url/\$1 [L]\n");
+        fwrite($fp, "  RewriteRule (.*) $base_url/\$1 [L,B]\n");
         fwrite($fp, "</IfModule>\n");
         fwrite($fp, "<IfModule !mod_rewrite.c>\n");
         fwrite($fp, "  Order Deny,Allow\n");
@@ -729,7 +729,7 @@ class access_Core {
       if ($fp = @fopen(VARPATH . "security_test/.htaccess", "w+")) {
         fwrite($fp, "Options +FollowSymLinks\n");
         fwrite($fp, "RewriteEngine On\n");
-        fwrite($fp, "RewriteRule verify $success_url [L]\n");
+        fwrite($fp, "RewriteRule verify $success_url [L,B]\n");
         fclose($fp);
       }
 
